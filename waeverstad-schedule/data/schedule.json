@@ -1,0 +1,154 @@
+{
+  "year": 2026,
+  "sample": true,
+  "note": "Voorbeeldprogramma 2026. Tijden in de Waevertent zijn afgelezen van de poster; de horeca werkt met middag en avond.",
+  "dayparts": {
+    "afternoon": {"label": "Middag", "from": "13:00", "to": "19:00"},
+    "evening": {"label": "Avond", "from": "19:00", "to": "24:00"}
+  },
+  "locations": [
+    {"id": "waevertent", "name": "Waevertent", "kind": "stage"},
+    {"id": "buiten", "name": "Buiten podium", "kind": "stage", "where": "op ’t Waeverplein"},
+    {"id": "gijik", "name": "Gij&Ik", "kind": "bar"},
+    {"id": "buskens", "name": "Buskens", "kind": "bar"},
+    {"id": "keizer", "name": "De Keizer", "kind": "bar"},
+    {"id": "dientje", "name": "Dientje", "kind": "bar"}
+  ],
+  "days": [
+    {
+      "date": "2026-02-12",
+      "themes": [
+        {"title": "Vùrspoelen x Carnaval XXL"}
+      ],
+      "items": [
+        {"location": "waevertent", "session": "Carnaval XXL", "from": "19:00", "to": "20:30", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Carnaval XXL", "from": "20:30", "to": "21:30", "title": "Harrie Snijders"},
+        {"location": "waevertent", "session": "Carnaval XXL", "from": "21:30", "to": "22:00", "title": "Jari Hellegers"},
+        {"location": "waevertent", "session": "Carnaval XXL", "from": "22:00", "to": "22:30", "title": "Joyliana"},
+        {"location": "waevertent", "session": "Carnaval XXL", "from": "22:30", "to": "23:30", "title": "Buren van de Brandweer"},
+        {"location": "waevertent", "session": "Carnaval XXL", "from": "23:30", "to": "24:00", "title": "Nicky Sombrero & Davey Beijer"},
+        {"location": "gijik", "daypart": "evening", "title": "Pre-carnaval & radje draaien"}
+      ]
+    },
+    {
+      "date": "2026-02-13",
+      "themes": [
+        {"title": "Nietwerkbal", "with": "Dé gezelligste vrijmibo!"},
+        {"title": "Crazy Carnaval Cantus", "label": "18+"}
+      ],
+      "items": [
+        {"location": "waevertent", "session": "Nietwerkbal", "from": "13:00", "to": "15:15", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Nietwerkbal", "from": "15:15", "to": "15:30", "title": "Eerste vat aanslaan", "highlight": true},
+        {"location": "waevertent", "session": "Nietwerkbal", "from": "15:30", "to": "16:00", "title": "Ralph de Kort"},
+        {"location": "waevertent", "session": "Nietwerkbal", "from": "16:00", "to": "16:30", "title": "Zanger Rens"},
+        {"location": "waevertent", "session": "Nietwerkbal", "from": "16:30", "to": "17:00", "title": "Geen Stempel"},
+        {"location": "waevertent", "session": "Nietwerkbal", "from": "17:00", "to": "18:30", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Crazy Carnaval Cantus", "from": "19:30", "to": "24:00", "title": "Crazy Carnaval Cantus", "label": "18+"},
+        {"location": "gijik", "daypart": "afternoon", "title": "Vurproeven", "with": "Radje draaien & BOZU buitenbar"},
+        {"location": "gijik", "daypart": "evening", "title": "Apres ski party", "with": "DJ Dimitri Lanos"},
+        {"location": "buskens", "daypart": "evening", "title": "Apres ski party", "with": "DJ MCHL"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Lerarencafé", "with": "DJ Irmo"},
+        {"location": "dientje", "daypart": "evening", "title": "Kronenbal", "with": "DJ Adriaan & DJ Dauza"}
+      ]
+    },
+    {
+      "date": "2026-02-14",
+      "themes": [
+        {"title": "Klossen los!", "with": "Buiten op ’t Waeverplein"},
+        {"title": "Waeverstad zingt", "with": "Met de CCC-band"}
+      ],
+      "items": [
+        {"location": "buiten", "session": "Klossen los!", "from": "13:00", "to": "15:00", "title": "DJ Harmless"},
+        {"location": "buiten", "session": "Klossen los!", "from": "15:00", "to": "15:15", "title": "Onthulling van de Waever", "with": "Samen met de Gimmertse hoogheden", "highlight": true},
+        {"location": "buiten", "session": "Klossen los!", "from": "15:15", "to": "15:45", "title": "Huub Hangop"},
+        {"location": "buiten", "session": "Klossen los!", "from": "15:45", "to": "16:15", "title": "DJ Harmless"},
+        {"location": "buiten", "session": "Klossen los!", "from": "16:15", "to": "16:45", "title": "CV Moeilijk Straal"},
+        {"location": "buiten", "session": "Klossen los!", "from": "16:45", "to": "19:00", "title": "DJ Harmless"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "19:00", "to": "19:30", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "19:30", "to": "20:30", "title": "Crazy Carnaval Cantusband"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "20:30", "to": "21:00", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "21:00", "to": "21:45", "title": "One Two Trio"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "21:45", "to": "22:30", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "22:30", "to": "23:30", "title": "Lampegastuh"},
+        {"location": "waevertent", "session": "Waeverstad zingt", "from": "23:30", "to": "24:00", "title": "Ramuro Diaz"},
+        {"location": "gijik", "daypart": "afternoon", "title": "Vurproeven", "with": "Buitenbar open"},
+        {"location": "gijik", "daypart": "evening", "title": "Nozem-avond", "with": "DJ MCHL"},
+        {"location": "buskens", "daypart": "afternoon", "title": "Kindermatinee"},
+        {"location": "buskens", "daypart": "evening", "title": "Nozem-avond", "with": "DJ MCHL"},
+        {"location": "keizer", "daypart": "allday", "title": "2 uurkes vooraf", "with": "Heintje Davids Collectief, Feest-DJ Aad"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Start carnaval & kindermatinee", "with": "Heintje Davids & DJ Majid"},
+        {"location": "dientje", "daypart": "evening", "title": "Carnavalsbal", "with": "DJ Thomas & DJ Dimitri & Bende Betoeterd"}
+      ]
+    },
+    {
+      "date": "2026-02-15",
+      "themes": [
+        {"title": "Snipperdag XXL", "with": "Met de Groot Gemertse optocht"}
+      ],
+      "items": [
+        {"location": "buiten", "session": "Snipperdag XXL", "from": "13:00", "to": "15:00", "title": "DJ Bart"},
+        {"location": "buiten", "session": "Snipperdag XXL", "from": "15:00", "to": "16:00", "title": "James Tuns"},
+        {"location": "buiten", "session": "Snipperdag XXL", "from": "16:00", "to": "17:00", "title": "Woeste Wessel"},
+        {"location": "buiten", "session": "Snipperdag XXL", "from": "17:00", "to": "18:00", "title": "Ramuro Diaz"},
+        {"location": "buiten", "session": "Snipperdag XXL", "from": "18:00", "to": "19:00", "title": "The Darkraver"},
+        {"location": "waevertent", "session": "Snipperdag XXL", "from": "19:00", "to": "20:30", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Snipperdag XXL", "from": "20:30", "to": "22:00", "title": "Bar Gezellig Live!"},
+        {"location": "waevertent", "session": "Snipperdag XXL", "from": "22:00", "to": "22:30", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Snipperdag XXL", "from": "22:30", "to": "24:00", "title": "Bar Gezellig Live!"},
+        {"location": "gijik", "daypart": "afternoon", "title": "Muziek tijdens d’n optocht", "with": "Buiten: met Tweekeerdehelft"},
+        {"location": "gijik", "daypart": "evening", "title": "Optocht afterparty", "with": "DJ Nando, The Darkraver"},
+        {"location": "buskens", "daypart": "afternoon", "title": "Kindermatinee"},
+        {"location": "buskens", "daypart": "evening", "title": "Optocht afterparty", "with": "DJ Nando"},
+        {"location": "keizer", "daypart": "allday", "title": "Optochtbal", "with": "Feest-DJ’s Aad en Hans & prijsuitreiking optocht"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Kindermatinee & optocht feestje", "with": "DJ Tim & De Knaoiers"},
+        {"location": "dientje", "daypart": "evening", "title": "Zak ’ns lekker door", "with": "“Stoutd” & DJ Vito"}
+      ]
+    },
+    {
+      "date": "2026-02-16",
+      "themes": [
+        {"title": "Rondje Waeverstad", "with": "Thema: rood-wit-groen"},
+        {"title": "Uit je heilige losbol"}
+      ],
+      "items": [
+        {"location": "waevertent", "session": "Rondje Waeverstad", "from": "13:00", "to": "19:00", "title": "DJ Bart & Blaaskapellen"},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "19:00", "to": "19:30", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "19:30", "to": "20:00", "title": "Prijsuitreiking Rondje Waeverstad", "highlight": true},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "20:00", "to": "20:30", "title": "CV De Kapotte Kachels"},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "20:30", "to": "21:00", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "21:00", "to": "21:30", "title": "Mosterd na de Maaltijd"},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "21:30", "to": "22:45", "title": "DJ Marcel"},
+        {"location": "waevertent", "session": "Uit je heilige losbol", "from": "22:45", "to": "24:00", "title": "Lanterfantje"},
+        {"location": "gijik", "daypart": "afternoon", "title": "Rondje Waeverstad & vurproeven"},
+        {"location": "gijik", "daypart": "evening", "title": "Roze maandag", "with": "Drag Bingo & DJ Urban Ghost"},
+        {"location": "buskens", "daypart": "afternoon", "title": "Rondje Waeverstad & kindermatinee"},
+        {"location": "keizer", "daypart": "afternoon", "title": "Rondje Waeverstad", "with": "Carnavalskaraoke met Feest-DJ Hans"},
+        {"location": "keizer", "daypart": "evening", "title": "Sander Bekkers", "with": "Zoveel band in één vent!"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Wakker worden", "with": "Met S.O.A. & de Weavers"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Rondje Waeverstad & kindermatinee", "with": "DJ Stein"},
+        {"location": "dientje", "daypart": "evening", "title": "Live in ’t café", "with": "Dweilen met C’est tout, Heintje Davids en Blitz"},
+        {"location": "dientje", "daypart": "evening", "title": "Jongerenbal", "with": "DJ Jasca"}
+      ]
+    },
+    {
+      "date": "2026-02-17",
+      "themes": [
+        {"title": "Nadruppelen", "with": "Met spectaculaire eindshow!"}
+      ],
+      "items": [
+        {"location": "waevertent", "session": "Nadruppelen", "from": "13:00", "to": "19:00", "title": "DJ Bart & Duo Gruijtmuntend"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "19:00", "to": "20:00", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "20:00", "to": "20:30", "title": "Johnny Purple"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "20:30", "to": "21:30", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "21:30", "to": "22:00", "title": "Deurzakkers"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "22:00", "to": "23:00", "title": "Ramuro Diaz"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "23:00", "to": "23:30", "title": "Gebroeders Ko"},
+        {"location": "waevertent", "session": "Nadruppelen", "from": "23:30", "to": "24:00", "title": "Eindshow buiten", "highlight": true},
+        {"location": "gijik", "daypart": "evening", "title": "BOZU Night 1+1", "with": "DJ Urban Ghost"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Kindermatinee", "with": "In het café met DJ Nando"},
+        {"location": "dientje", "daypart": "afternoon", "title": "Boerenbruiloft", "with": "In de zaal!"},
+        {"location": "dientje", "daypart": "evening", "title": "Jongerenbal", "with": "DJ John Macraven"}
+      ]
+    }
+  ]
+}

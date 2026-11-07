@@ -1,0 +1,83 @@
+{
+  "title": "Kies de opzet van de programmapagina",
+  "question": "De stijl ligt vast: die van de huidige site. Hier kies je hoe het programma op je telefoon werkt. Alle drie werken ook op desktop.",
+  "options": [
+    {
+      "id": "tijdlijn",
+      "kind": "assigned",
+      "kicker": "THE ROLL",
+      "label": "Festival-tijdlijn",
+      "lineage": "De timetable van festivalapps, in de posterstijl van Waeverstad",
+      "thesis": "Alle locaties onder elkaar op één tijdas, zoals de Waevertent-poster, maar dan te vegen.",
+      "palette": ["#09a552", "#fbce06", "#ffec96", "#e6342a", "#124a2f"],
+      "materials": ["geweven groen lintpatroon", "posterbanden", "schuine stickers"],
+      "viewport": "Dagtabs bovenaan met het dagthema eronder. Daaronder per locatie één rij met blokken op een tijdas. Op carnavalsdagen opent hij op het huidige uur, met een rode NU-sticker op de tijdlijn.",
+      "risk": "Zijwaarts vegen op de telefoon is minder vanzelfsprekend dan scrollen. De horeca heeft alleen middag/avond, dus die blokken zijn breed.",
+      "raised": [
+        {"from": "challenger-gateboard", "raise": "Eén toestand, één markering: alleen wat nu speelt krijgt de NU-sticker, en die blijft staan tot het blok voorbij is."},
+        {"from": "challenger-catalogus", "raise": "Acts aanvinken die je niet wilt missen. Je keuzes blijven op je telefoon bewaard en vormen samen 'Mijn programma'."}
+      ],
+      "html": ".impeccable/mocks/decision/tijdlijn.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "nu-straks",
+      "kind": "dealt",
+      "label": "Nu & straks",
+      "lineage": "Wat-is-er-nu-overzicht per locatie, met het dagschema eronder",
+      "thesis": "Opent op wat er nú gebeurt op elke locatie en wat er daarna komt. Het volledige dagschema staat eronder.",
+      "palette": ["#09a552", "#fbce06", "#ffec96", "#e6342a", "#7be477"],
+      "materials": ["posterbanden per locatie", "schuine stickers", "vullende balk"],
+      "viewport": "Per locatie een posterband met de act van nu en wat er straks komt. De band vult zich naarmate het optreden vordert. Daaronder het hele dagprogramma als lijst.",
+      "risk": "Buiten carnaval is er geen 'nu', dus dan opent hij op de eerste dag. Je ziet minder van de hele week in één blik.",
+      "html": ".impeccable/mocks/decision/nu-straks.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "per-locatie",
+      "kind": "dealt",
+      "label": "Per locatie",
+      "lineage": "Programmaboekje per zaal",
+      "thesis": "Kies een plek (tent, buitenpodium of café) en zie de hele week van die plek.",
+      "palette": ["#09a552", "#fbce06", "#e6342a", "#ffec96", "#124a2f"],
+      "materials": ["locatiebanners", "dagkoppen met dagthema", "stickers"],
+      "viewport": "Zes locatieknoppen, een grote schuine banner van de gekozen plek en daaronder do t/m di met tijden en acts.",
+      "risk": "Wie wil weten wat er nu overal te doen is, moet tussen locaties wisselen.",
+      "html": ".impeccable/mocks/decision/per-locatie.html",
+      "htmlFrame": "390x844"
+    },
+    {
+      "id": "challenger-gateboard",
+      "kind": "challenger",
+      "catalogId": "vernacular-ephemera-boarding-pass-and-gate-board",
+      "verdict": "declined",
+      "label": "Vertrekbord",
+      "lineage": "Vertrekborden op stations en vliegvelden",
+      "thesis": "Alles op één lijst, gesorteerd op begintijd, zoals een vertrekbord.",
+      "palette": ["#16181a", "#f2f2f2", "#ffb000"],
+      "materials": ["paneel", "tabulaire cijfers"],
+      "viewport": "Eén lijst van alles wat begint, wat al bezig is blijft oplichten.",
+      "case": "Herkenbaar, maar de horeca heeft geen exacte tijden. Sorteren op tijd klopt dus voor de helft van het programma niet.",
+      "kept": "Eén markering, alleen voor wat nu speelt.",
+      "risk": "Wordt een NS-bord in plaats van Waeverstad."
+    },
+    {
+      "id": "challenger-catalogus",
+      "kind": "challenger",
+      "catalogId": "pop-culture-shelf-doujin-event-catalog",
+      "verdict": "declined",
+      "label": "Beurscatalogus",
+      "lineage": "Gedrukte beurscatalogus met plattegrond",
+      "thesis": "Alle acts als vakjes in een raster, met een plattegrond die naar de plek wijst.",
+      "palette": ["#1a1a1a", "#e9e6dc", "#d6336c"],
+      "materials": ["krantenpapier", "pen-omcirkeling"],
+      "viewport": "Raster van acts, met een plattegrond van het centrum.",
+      "case": "Carnavalsgangers herkennen geen beurscatalogus, en een plattegrond zou posities verzinnen die we niet hebben.",
+      "kept": "Zelf acts omcirkelen en die keuze bewaren.",
+      "risk": "Te druk en te vreemd voor een carnavalspubliek."
+    }
+  ],
+  "reroll": true,
+  "steer": true,
+  "buildPath": {"value": "code", "toggle": false}
+}

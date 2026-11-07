@@ -1,0 +1,13 @@
+.DS_Store
+*.zip
+# Commercial fonts are never committed (Intro Rust is licensed to the association's site).
+*.otf
+*.ttf
+*.woff
+*.woff2
+# Local review captures
+.impeccable/review/
+.impeccable/live/
+reference/2026/programma-pagina-snapshot.html
+.impeccable/hook.cache.json
+.impeccable/questions/
