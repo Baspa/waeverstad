@@ -28,10 +28,10 @@ STORY: The visitor opens on today with its theme and sees every location in one 
 
 FIRST VIEWPORT, phone at 390:
 - Compact title with a date pill, then six day tabs (the active one red and tilted), then the yellow day-theme banner.
-- The timetable: a dark-green time ruler; sticky dark-green location tabs (Buiten podium, Waevertent, a HORECA divider, then Gij&Ik, Buskens, De Keizer, Dientje); slots at 160px per hour; horeca blocks spanning middag or avond.
+- The timetable: a dark-green time ruler; sticky dark-green location tabs (Buiten podium, Waevertent, a HORECA divider, then Gij&Ik, Buskens, De Keizer, Dientje); slots at 190px per hour; horeca blocks spanning middag or avond.
 - A white NU line with a red, tilted "NU 16:20" sticker.
 - Bottom chips: "Hele dag" and "Mijn programma" with a count.
-- Desktop (timeline container ≥ 860px): the axis turns. Time runs down like the Waevertent poster, locations become columns, and the whole day 13:00–00:00 fits with normal page scrolling and no horizontal scroll. Short slots drop their times, as on the poster. The toolbar moves above the timeline.
+- Desktop (timeline container ≥ 1000px): the axis turns. Time runs down like the Waevertent poster, locations become columns, and the whole day 13:00–00:00 fits with normal page scrolling and no horizontal scroll. Short slots drop their times, as on the poster. The toolbar moves above the timeline.
 
 FORM: Festival timetable: locations as rows, time running across. Position 5 of 7 on the ordered list, dealt lead. seed:fbcb793a061299f3.
 - Signature move: the NU sticker rides the now-line, the timetable opens scrolled to now, and special moments hang as red flags above their slot.

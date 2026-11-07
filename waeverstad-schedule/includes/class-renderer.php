@@ -48,6 +48,7 @@ final class Renderer
         $html .= '<script>document.currentScript.parentNode.setAttribute("data-js","")</script>';
         $html .= $this->header($days);
         $html .= $this->dayTabs($days);
+        $html .= $this->minePanel();
 
         foreach ($days as $index => $day) {
             $html .= $this->day($day, $index === 0);
@@ -151,7 +152,7 @@ final class Renderer
         $html .= '</div></div>';
 
         if ($closed !== []) {
-            $html .= '<p class="wvp-closed">Geen programma vandaag: ' . self::e(self::joinNames($closed)) . '</p>';
+            $html .= '<p class="wvp-closed">' . self::e('Geen programma op ' . self::DAY_NAMES[(int) $date->format('w')] . ': ' . self::joinNames($closed)) . '</p>';
         }
 
         return $html . '</div></section>';
@@ -161,8 +162,11 @@ final class Renderer
     {
         $themes = $day['themes'] ?? [];
         $html = '<header class="wvp-theme">';
-        $html .= '<p class="wvp-theme-date">' . self::e($longDate) . '</p>';
-        if ($themes !== []) {
+        // The date is part of the title so it reads as one line without JS; with JS the active tab shows it.
+        $datePrefix = '<span class="wvp-theme-date">' . self::e($longDate . ($themes === [] ? '' : ': ')) . '</span>';
+        if ($themes === []) {
+            $html .= '<h3 class="wvp-theme-title">' . $datePrefix . '</h3>';
+        } else {
             $titles = [];
             $subtitles = [];
             foreach ($themes as $theme) {
@@ -175,7 +179,7 @@ final class Renderer
                     $subtitles[] = self::e($theme['with']);
                 }
             }
-            $html .= '<h3 class="wvp-theme-title">' . implode('<span class="wvp-amp" aria-hidden="true"> &amp; </span><span class="wvp-sr">, </span>', $titles) . '</h3>';
+            $html .= '<h3 class="wvp-theme-title">' . $datePrefix . implode('<span class="wvp-amp" aria-hidden="true"> &amp; </span><span class="wvp-sr">, </span>', $titles) . '</h3>';
             if ($subtitles !== []) {
                 $html .= '<p class="wvp-theme-sub">' . implode(' · ', $subtitles) . '</p>';
             }
@@ -304,9 +308,10 @@ final class Renderer
             $placed[] = [$item, $daypart, $lane, $from, $to];
         }
 
-        $html = '<div class="wvp-row wvp-row--bar" data-location="' . self::e($location['id']) . '">';
+        $laneCount = max(1, max($lanes));
+        $html = '<div class="wvp-row wvp-row--bar" data-location="' . self::e($location['id']) . '" style="--lanes:' . $laneCount . '">';
         $html .= $this->label($location);
-        $html .= '<ol class="wvp-lane" style="--lanes:' . max(1, max($lanes)) . '">';
+        $html .= '<ol class="wvp-lane">';
 
         foreach ($placed as [$item, $daypart, $lane, $from, $to]) {
             $daypartLabel = $daypart === 'allday'
@@ -352,8 +357,16 @@ final class Renderer
             . '<button type="button" class="wvp-chip" data-filter="mine" aria-pressed="false">Mijn programma <span class="wvp-count">0</span></button>'
             . '</div>'
             . '<button type="button" class="wvp-chip wvp-jump" hidden>Nu</button>'
-            . '</div>'
-            . '<p class="wvp-hint" hidden role="status">Tik op het sterretje bij een act. Dan staat hij hier, ook als je de pagina later weer opent.</p>';
+            . '</div>';
+    }
+
+    private function minePanel(): string
+    {
+        return '<section class="wvp-mine" hidden aria-labelledby="wvp-mine-title">'
+            . '<h3 class="wvp-mine-title" id="wvp-mine-title">Mijn programma</h3>'
+            . '<div class="wvp-mine-list"></div>'
+            . '<p class="wvp-hint" role="status">Tik op het sterretje bij een act. Dan staat hij hier, ook als je de pagina later weer opent.</p>'
+            . '</section>';
     }
 
     private function footer(): string

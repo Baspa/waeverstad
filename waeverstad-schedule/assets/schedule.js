@@ -60,7 +60,8 @@
 		var favourites = loadSet(storageKey);
 		var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		var jumpButton = root.querySelector('.wvp-jump');
-		var hint = root.querySelector('.wvp-hint');
+		var minePanel = root.querySelector('.wvp-mine');
+		var mineList = root.querySelector('.wvp-mine-list');
 		var counter = root.querySelector('.wvp-count');
 		var filterButtons = [].slice.call(root.querySelectorAll('.wvp-filter .wvp-chip'));
 		var now = currentMoment();
@@ -91,18 +92,36 @@
 			return (canvas.offsetWidth - label.offsetWidth) / (end - start);
 		}
 
-		// Hide the NOW line while it is scrolled underneath the sticky location labels.
+		// Hide the NOW line and ruler labels while they are scrolled underneath the sticky
+		// location labels, so nothing shows up torn in half next to them.
 		function tuckNowLine(panel) {
 			var line = panel.querySelector('.wvp-now');
-			if (!line || line.hidden) return;
+			var ticks = [].slice.call(panel.querySelectorAll('.wvp-tick'));
 			if (!isHorizontal(panel)) {
-				line.classList.remove('is-tucked');
+				if (line) line.classList.remove('is-tucked');
+				ticks.forEach(function (tick) { tick.classList.remove('is-tucked'); });
 				return;
 			}
 			var scroller = panel.querySelector('.wvp-scroller');
 			var labelWidth = panel.querySelector('.wvp-label').offsetWidth;
-			var x = labelWidth + (now.hour - start) * hourWidth(panel) - scroller.scrollLeft;
-			line.classList.toggle('is-tucked', x < labelWidth + 2);
+			var edge = scroller.getBoundingClientRect().left + labelWidth + 2;
+			ticks.forEach(function (tick) {
+				tick.classList.toggle('is-tucked', tick.getBoundingClientRect().left < edge);
+			});
+			if (line && !line.hidden) {
+				var x = labelWidth + (now.hour - start) * hourWidth(panel) - scroller.scrollLeft;
+				line.classList.toggle('is-tucked', x < labelWidth + 2);
+			}
+		}
+
+		var tuckQueued = false;
+		function queueTuck(panel) {
+			if (tuckQueued) return;
+			tuckQueued = true;
+			window.requestAnimationFrame(function () {
+				tuckQueued = false;
+				tuckNowLine(panel);
+			});
 		}
 
 		function refreshNow() {
@@ -132,7 +151,7 @@
 				});
 				if (panel === activePanel) tuckNowLine(panel);
 			});
-			if (jumpButton) jumpButton.hidden = !isLive(activePanel);
+			if (jumpButton) jumpButton.hidden = !isLive(activePanel) || root.getAttribute('data-filter') === 'mine';
 		}
 
 		function scrollToFocus(panel, smooth) {
@@ -175,7 +194,7 @@
 			activePanel = panelFor(tab);
 			refreshNow();
 			if (options.focus) tab.focus();
-			scrollToFocus(activePanel, !!options.smooth);
+			if (!options.noScroll) scrollToFocus(activePanel, !!options.smooth);
 			tuckNowLine(activePanel);
 		}
 
@@ -196,19 +215,20 @@
 
 		panels.forEach(function (panel) {
 			var scroller = panel.querySelector('.wvp-scroller');
-			if (scroller) scroller.addEventListener('scroll', function () { tuckNowLine(panel); }, { passive: true });
+			if (scroller) scroller.addEventListener('scroll', function () { queueTuck(panel); }, { passive: true });
 		});
-		window.addEventListener('resize', function () { if (activePanel) tuckNowLine(activePanel); });
+		window.addEventListener('resize', function () { if (activePanel) queueTuck(activePanel); });
 
-		// Stars
+		// Stars: the timeline slots and the rows in the "Mijn programma" list share data-id.
 		function syncFavourites() {
 			var count = 0;
-			[].forEach.call(root.querySelectorAll('.wvp-slot[data-id]'), function (slot) {
-				var on = favourites.has(slot.getAttribute('data-id'));
-				slot.classList.toggle('is-fav', on);
-				var star = slot.querySelector('.wvp-star');
+			[].forEach.call(root.querySelectorAll('[data-id]'), function (item) {
+				var on = favourites.has(item.getAttribute('data-id'));
+				var isSlot = item.classList.contains('wvp-slot');
+				item.classList.toggle(isSlot ? 'is-fav' : 'is-off', isSlot ? on : !on);
+				var star = item.querySelector('.wvp-star');
 				if (star) star.setAttribute('aria-pressed', on ? 'true' : 'false');
-				if (on) count++;
+				if (isSlot && on) count++;
 			});
 			if (counter) counter.textContent = String(count);
 			return count;
@@ -216,23 +236,165 @@
 
 		root.addEventListener('click', function (e) {
 			var star = e.target.closest && e.target.closest('.wvp-star');
-			if (!star || !root.contains(star)) return;
-			var slot = star.closest('.wvp-slot');
-			var id = slot && slot.getAttribute('data-id');
-			if (!id) return;
-			if (favourites.has(id)) favourites.delete(id); else favourites.add(id);
-			saveSet(storageKey, favourites);
-			var count = syncFavourites();
-			if (hint && root.getAttribute('data-filter') === 'mine') hint.hidden = count > 0;
+			if (star && root.contains(star)) {
+				var holder = star.closest('[data-id]');
+				var id = holder && holder.getAttribute('data-id');
+				if (!id) return;
+				if (favourites.has(id)) favourites.delete(id); else favourites.add(id);
+				saveSet(storageKey, favourites);
+				syncFavourites();
+				return;
+			}
+			var go = e.target.closest && e.target.closest('.wvp-mine-go');
+			if (go && root.contains(go)) goToSlot(go.parentNode.getAttribute('data-id'));
 		});
 
-		filterButtons.forEach(function (button) {
-			button.addEventListener('click', function () {
-				var mode = button.getAttribute('data-filter');
-				filterButtons.forEach(function (b) { b.setAttribute('aria-pressed', b === button ? 'true' : 'false'); });
-				root.setAttribute('data-filter', mode);
-				if (hint) hint.hidden = !(mode === 'mine' && favourites.size === 0);
+		// "Mijn programma": the starred acts of every day as one list, so nothing hides off-screen.
+		function element(tag, className, text) {
+			var node = document.createElement(tag);
+			if (className) node.className = className;
+			if (text) node.textContent = text;
+			return node;
+		}
+
+		function buildGroup(panel, slots, ended) {
+			var tab = tabs.filter(function (t) { return panelFor(t) === panel; })[0];
+			var dayName = tab ? tab.querySelector('.wvp-sr').textContent : panel.getAttribute('data-date');
+			if (tab && tab.classList.contains('is-today')) dayName += ' · vandaag';
+			var group = element('div', 'wvp-mine-day');
+			group.appendChild(element('h4', 'wvp-mine-date', dayName));
+			var list = element('ol');
+
+			slots.forEach(function (slot) {
+				var item = element('li', 'wvp-mine-item');
+				item.setAttribute('data-id', slot.getAttribute('data-id'));
+				if (!ended && slot.classList.contains('is-now')) {
+					item.classList.add('is-now');
+					item.appendChild(element('span', 'wvp-mine-now', 'Nu'));
+				}
+
+				var go = element('button', 'wvp-mine-go');
+				go.type = 'button';
+				var time = element('span', 'wvp-mine-time');
+				var part = slot.querySelector('.wvp-part');
+				var clock = slot.querySelector('.wvp-time');
+				if (part) {
+					time.textContent = part.textContent;
+				} else if (clock) {
+					var end = clock.querySelector('.wvp-time-end');
+					time.textContent = clock.firstChild.textContent;
+					if (end) time.appendChild(element('small', '', 'tot ' + end.textContent.replace(/^[–-]/, '')));
+				}
+				go.appendChild(time);
+
+				var name = slot.querySelector('.wvp-name').cloneNode(true);
+				name.className = 'wvp-mine-name';
+				go.appendChild(name);
+
+				var meta = element('span', 'wvp-mine-meta');
+				var label = slot.closest('.wvp-row').querySelector('.wvp-label');
+				meta.appendChild(element('b', '', label.firstChild.textContent));
+				var withLine = slot.querySelector('.wvp-with');
+				if (withLine) meta.appendChild(document.createTextNode(' · ' + withLine.textContent));
+				go.appendChild(meta);
+				item.appendChild(go);
+
+				var star = slot.querySelector('.wvp-star');
+				if (star) item.appendChild(star.cloneNode(true));
+				list.appendChild(item);
 			});
+
+			group.appendChild(list);
+			return group;
+		}
+
+		// During carnival the list starts with what is on now or next; whatever has
+		// ended folds away under "Al geweest". Outside carnival it is plain day order.
+		function buildMineList() {
+			mineList.textContent = '';
+			var duringCarnival = tabs.some(function (t) { return t.classList.contains('is-today'); });
+			var coming = [];
+			var past = [];
+			var total = 0;
+			var pastCount = 0;
+
+			panels.forEach(function (panel) {
+				var slots = [].slice.call(panel.querySelectorAll('.wvp-slot[data-id]')).filter(function (slot) {
+					return favourites.has(slot.getAttribute('data-id'));
+				});
+				if (!slots.length) return;
+				slots.sort(function (a, b) { return parseFloat(a.getAttribute('data-from')) - parseFloat(b.getAttribute('data-from')); });
+				total += slots.length;
+
+				var date = panel.getAttribute('data-date');
+				var hasEnded = function (slot) {
+					if (!duringCarnival) return false;
+					if (date < now.date) return true;
+					return date === now.date && parseFloat(slot.getAttribute('data-to')) <= now.hour;
+				};
+				var ended = slots.filter(hasEnded);
+				var open = slots.filter(function (slot) { return !hasEnded(slot); });
+				if (open.length) coming.push(buildGroup(panel, open, false));
+				if (ended.length) {
+					past.push(buildGroup(panel, ended, true));
+					pastCount += ended.length;
+				}
+			});
+
+			coming.forEach(function (group) { mineList.appendChild(group); });
+			if (past.length) {
+				var fold = element('details', 'wvp-mine-past');
+				fold.appendChild(element('summary', '', 'Al geweest (' + pastCount + ')'));
+				past.forEach(function (group) { fold.appendChild(group); });
+				mineList.appendChild(fold);
+			}
+			minePanel.classList.toggle('is-empty', total === 0);
+		}
+
+		function setFilter(mode) {
+			filterButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === mode ? 'true' : 'false'); });
+			root.setAttribute('data-filter', mode);
+			if (minePanel) {
+				if (mode === 'mine') buildMineList();
+				minePanel.hidden = mode !== 'mine';
+			}
+			refreshNow();
+			if (mode !== 'mine' && activePanel) {
+				scrollToFocus(activePanel, false);
+				tuckNowLine(activePanel);
+			}
+		}
+
+		// From the list back to the timeline, with the act in view.
+		function goToSlot(id) {
+			var slot = [].filter.call(root.querySelectorAll('.wvp-slot[data-id]'), function (s) { return s.getAttribute('data-id') === id; })[0];
+			if (!slot) return;
+			var panel = slot.closest('.wvp-day');
+			var tab = tabs.filter(function (t) { return panelFor(t) === panel; })[0];
+			filterButtons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-filter') === 'all' ? 'true' : 'false'); });
+			root.setAttribute('data-filter', 'all');
+			if (minePanel) minePanel.hidden = true;
+			if (tab) activate(tab, { noScroll: true });
+
+			if (isHorizontal(panel)) {
+				var from = parseFloat(slot.getAttribute('data-from')) - start;
+				panel.querySelector('.wvp-scroller').scrollLeft = Math.max(0, (from - (slot.classList.contains('wvp-slot--daypart') ? 0 : 0.25)) * hourWidth(panel));
+				tuckNowLine(panel);
+			}
+			var rect = slot.getBoundingClientRect();
+			var offset = rect.height > window.innerHeight * 0.6 ? 96 : (window.innerHeight - rect.height) / 2;
+			window.scrollTo({ top: window.pageYOffset + rect.top - offset, behavior: reduceMotion ? 'auto' : 'smooth' });
+
+			slot.classList.remove('is-found');
+			void slot.offsetWidth;
+			slot.classList.add('is-found');
+			setTimeout(function () { slot.classList.remove('is-found'); }, 1900);
+			var star = slot.querySelector('.wvp-star');
+			if (star) star.focus({ preventScroll: true });
+		}
+
+		filterButtons.forEach(function (button) {
+			button.addEventListener('click', function () { setFilter(button.getAttribute('data-filter')); });
 		});
 
 		if (jumpButton) {

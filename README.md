@@ -21,9 +21,10 @@ The first piece is a new programme page. The old page showed the programme as th
 ## How the timeline works
 
 - **Phone:** time runs horizontally and every location is a row. You swipe through the day; location labels stay pinned on the left. On a carnival day it opens on the current time, with a red **NU** sticker on the time line.
-- **Desktop** (timeline wider than 860px): the axis turns and time runs downwards, like the old Waevertent poster. The whole day fits without horizontal scrolling.
+- **Desktop** (timeline at least 1000px wide): the axis turns and time runs downwards, like the old Waevertent poster. The whole day fits without horizontal scrolling.
 - **Horeca** only has *middag*/*avond* (afternoon/evening), not exact times. Those entries span the daypart instead of pretending to have a start time. Several entries in the same daypart get their own lane.
-- **Stars** save acts to "Mijn programma". This is stored in the visitor's browser (localStorage), with no account and nothing sent anywhere.
+- **Stars** save acts to "Mijn programma", which shows the starred acts of every day as one list. Tapping an act jumps back to it on the timeline. Stars are stored in the visitor's browser (localStorage), with no account and nothing sent anywhere.
+- **The NOW line** runs behind the programme blocks, so it never strikes through an act's name; the act that is on now gets a white block with a red outline.
 - **Without JavaScript** every day renders stacked underneath each other, so the content is always there.
 
 The HTML is rendered server-side in PHP (`includes/class-renderer.php`); `schedule.js` only adds day switching, the NOW line and stars.
@@ -104,3 +105,4 @@ The demo uses **Lilita One** (Google Fonts) as a stand-in, because Intro Rust is
 - A clean cut-out of the mascot illustration would be nice for the page, but we need to ask the association for the original file.
 - Linking programme items to the Tickets page hasn't been decided.
 - If non-technical volunteers need to edit the programme later, a WP-admin editor can replace the JSON file.
+- Ideas for later, from the design review: a cue for what's up next when the live act ends; the page title as the tilted ribbon banner from the posters; a sharper version of the woven background for phones.

@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-07T20:48:00Z",
+  "title": "Design System: Waeverstad Feest! Programma",
+  "extensions": {
+    "colorMeta": {
+      "brand-green": {
+        "role": "primary",
+        "displayName": "Brand Green",
+        "canonical": "oklch(63.3% 0.167 151.3)",
+        "tonalRamp": [
+          "#010f04",
+          "#002d10",
+          "#094d25",
+          "#147039",
+          "#0f964b",
+          "#34bb66",
+          "#63e28b",
+          "#d8f8df"
+        ]
+      },
+      "tent-green": {
+        "role": "primary",
+        "displayName": "Tent Green",
+        "canonical": "oklch(36.5% 0.074 158.0)",
+        "tonalRamp": [
+          "#020f07",
+          "#002d18",
+          "#144b30",
+          "#356a4d",
+          "#568b6c",
+          "#84a992",
+          "#adcdb9",
+          "#e7f1eb"
+        ]
+      },
+      "tent-green-veil": {
+        "role": "primary",
+        "displayName": "Tent Green Veil",
+        "canonical": "rgba(18, 74, 47, 0.9)",
+        "tonalRamp": [
+          "#020f07",
+          "#002d18",
+          "#144b30",
+          "#356a4d",
+          "#568b6c",
+          "#84a992",
+          "#adcdb9",
+          "#e7f1eb"
+        ]
+      },
+      "carnival-red": {
+        "role": "tertiary",
+        "displayName": "Carnival Red",
+        "canonical": "oklch(60.5% 0.215 28.7)",
+        "tonalRamp": [
+          "#1c0202",
+          "#4b0001",
+          "#7e0000",
+          "#b30003",
+          "#e12d25",
+          "#fb6959",
+          "#fbada2",
+          "#fee9e6"
+        ],
+        "note": "White text only 4.3:1; fills and large marks only."
+      },
+      "sticker-red": {
+        "role": "tertiary",
+        "displayName": "Sticker Red",
+        "canonical": "oklch(56.8% 0.203 28.9)",
+        "tonalRamp": [
+          "#1c0201",
+          "#4b0101",
+          "#7b0806",
+          "#af130f",
+          "#dc372c",
+          "#fd6756",
+          "#fcada1",
+          "#fee9e6"
+        ],
+        "note": "Text-safe red: white text 4.98:1."
+      },
+      "festival-yellow": {
+        "role": "secondary",
+        "displayName": "Festival Yellow",
+        "canonical": "oklch(86.5% 0.176 92.7)",
+        "tonalRamp": [
+          "#0f0b02",
+          "#2e2300",
+          "#4e3e00",
+          "#715b02",
+          "#957b11",
+          "#bc9b1a",
+          "#e9c01e",
+          "#ffeeb9"
+        ]
+      },
+      "pale-yellow": {
+        "role": "secondary",
+        "displayName": "Pale Yellow",
+        "canonical": "oklch(94.0% 0.108 97.2)",
+        "tonalRamp": [
+          "#0d0b06",
+          "#2a240a",
+          "#47401d",
+          "#675e32",
+          "#897e48",
+          "#b19f49",
+          "#d7c570",
+          "#f6efcf"
+        ]
+      },
+      "horeca-green": {
+        "role": "neutral",
+        "displayName": "Horeca Green",
+        "canonical": "oklch(87.8% 0.121 143.5)",
+        "tonalRamp": [
+          "#070d07",
+          "#122b12",
+          "#294928",
+          "#426940",
+          "#4d8f4b",
+          "#6eb26c",
+          "#93d991",
+          "#dcf8da"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#444444",
+          "#626262",
+          "#808080",
+          "#9e9e9e",
+          "#bdbdbd",
+          "#dedede",
+          "#ffffff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (Intro Rust / WAEV)",
+        "purpose": "Page title only, white with 0 .1em .1em text shadow.",
+        "note": "Public demo substitutes Lilita One because Intro Rust is commercial; not part of the system."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Day-theme and Mijn programma banners."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Act names in slots; 2-line clamp, never auto-hyphenated."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Location tabs, ruler ticks, chips, daypart markers."
+      },
+      "body": {
+        "displayName": "Body (Poppins)",
+        "purpose": "Supporting lines, notes, hints."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Slot times, tabular figures, no wrap."
+      },
+      "daypart": {
+        "displayName": "Daypart",
+        "purpose": "MIDDAG / AVOND in horeca blocks; data, not decoration."
+      }
+    },
+    "shadows": [
+      {
+        "name": "block",
+        "value": "0 2px 5px rgba(0,0,0,0.16)",
+        "purpose": "Resting slots and list items."
+      },
+      {
+        "name": "tab",
+        "value": "0 2px 4px rgba(0,0,0,0.14)",
+        "purpose": "Inactive day tabs."
+      },
+      {
+        "name": "chip",
+        "value": "0 3px 8px rgba(0,0,0,0.22)",
+        "purpose": "Floating toolbar chips (--wvp-shadow)."
+      },
+      {
+        "name": "banner",
+        "value": "0 4px 10px rgba(0,0,0,0.2)",
+        "purpose": "Tilted theme banners."
+      },
+      {
+        "name": "sticker",
+        "value": "0 3px 7px rgba(0,0,0,0.32)",
+        "purpose": "NU sticker; flags use 0 2px 5px rgba(0,0,0,0.28)."
+      },
+      {
+        "name": "live-lift",
+        "value": "0 4px 10px rgba(0,0,0,0.25)",
+        "purpose": "Live slot, paired with inset 0 0 0 3px #d42e24."
+      },
+      {
+        "name": "live-ring",
+        "value": "inset 0 0 0 3px #d42e24",
+        "purpose": "The live-slot ring; the only red ring at full strength."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Tab tilt, chip lift, star pop, NU sticker landing (--wvp-ease)."
+      },
+      {
+        "name": "nu-slap",
+        "value": "0.6s ease-out-expo",
+        "purpose": "NU sticker lands from rotate(-22deg) scale(1.5) to rotate(-5deg)."
+      },
+      {
+        "name": "found-pulse",
+        "value": "1.8s ease-out-expo",
+        "purpose": "Yellow 4px ring fades out on a slot reached from Mijn programma."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "none",
+        "purpose": "prefers-reduced-motion removes all transitions and animations."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "axis-turn",
+        "value": "container wvp >= 1000px",
+        "purpose": "Time runs down, locations become columns."
+      },
+      {
+        "name": "wide-chrome",
+        "value": "viewport >= 900px",
+        "purpose": "Full day names; toolbar static above timeline."
+      },
+      {
+        "name": "touch-bleed",
+        "value": "viewport <= 980px and pointer: coarse",
+        "purpose": "Timeline edge to edge."
+      }
+    ],
+    "metrics": {
+      "phone": {
+        "hourWidth": "190px",
+        "labelWidth": "104px",
+        "laneHeight": "60px",
+        "flagRoom": "30px",
+        "ruler": "30px"
+      },
+      "wide": {
+        "hourHeight": "92px",
+        "rail": "64px",
+        "columnHeader": "64px"
+      }
+    },
+    "tokenScope": "Custom properties live on .wvp (not :root); snippets below resolve them to literals."
+  },
+  "components": [
+    {
+      "name": "Day Tab",
+      "kind": "nav",
+      "refersTo": "day-tab",
+      "description": "One tab per carnival day; the selected tab turns sticker red and tilts.",
+      "html": "<div class=\"ds-days\"><button class=\"ds-daytab\">Vrijdag<b>13</b></button><button class=\"ds-daytab\" aria-selected=\"true\">Zaterdag<b>14</b><i>Vandaag</i></button><button class=\"ds-daytab\">Zondag<b>15</b></button></div>",
+      "css": ".ds-days{display:flex;gap:6px;padding:16px;background:#09a552;}.ds-daytab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:110px;min-height:64px;border:0;border-radius:5px;background:#ffec96;color:#124a2f;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.14);transition:transform .35s cubic-bezier(.16,1,.3,1),background-color .2s,color .2s;}.ds-daytab b{font-weight:400;font-size:23px;margin-top:3px;}.ds-daytab:hover{background:#fff;}.ds-daytab[aria-selected=true]{background:#d42e24;color:#fff;transform:rotate(-3deg);box-shadow:0 4px 9px rgba(0,0,0,.3);}.ds-daytab i{position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);padding:1px 6px;border-radius:3px;background:#124a2f;color:#fff;font-family:Poppins,Helvetica,Arial,sans-serif;font-style:normal;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;}.ds-daytab:focus-visible{outline:3px solid #fbce06;outline-offset:2px;}"
+    },
+    {
+      "name": "Day-Theme Banner",
+      "kind": "card",
+      "refersTo": "theme-banner",
+      "description": "Tilted yellow banner carrying the day theme.",
+      "html": "<div class=\"ds-wrap\"><div class=\"ds-theme\"><h3>Klossen los! &amp; Waeverstad zingt</h3><p>Buiten op ’t Waeverplein · Met de CCC-band</p></div></div>",
+      "css": ".ds-wrap{padding:24px;background:#09a552;}.ds-theme{padding:12px 22px 14px;background:#fbce06;color:#124a2f;transform:rotate(-1.2deg);box-shadow:0 4px 10px rgba(0,0,0,.2);}.ds-theme h3{margin:0;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:2rem;line-height:1.02;}.ds-theme p{margin:3px 0 0;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;}"
+    },
+    {
+      "name": "Timetable Row",
+      "kind": "custom",
+      "refersTo": "slot",
+      "description": "Sticky location label with act slots, a live slot and the NU line behind them.",
+      "html": "<div class=\"ds-tt\"><div class=\"ds-row\"><div class=\"ds-label\">Buiten podium<small>op ’t Waeverplein</small></div><div class=\"ds-lane\"><div class=\"ds-now\"><span>Nu <b>16:20</b></span></div><div class=\"ds-slot\" style=\"left:0;width:120px\"><span class=\"ds-time\">15:45</span><span class=\"ds-name\">DJ Harmless</span></div><div class=\"ds-slot ds-live\" style=\"left:124px;width:120px\"><span class=\"ds-time\">16:15</span><span class=\"ds-name\">CV Moeilijk Straal</span></div><div class=\"ds-slot ds-alt\" style=\"left:248px;width:200px\"><span class=\"ds-time\">16:45–19:00</span><span class=\"ds-name\">DJ Harmless</span></div></div></div></div>",
+      "css": ".ds-tt{padding:40px 16px 16px;background:#09a552;}.ds-row{display:flex;gap:6px;}.ds-label{flex:0 0 104px;display:flex;flex-direction:column;justify-content:center;min-height:60px;padding:5px 6px 5px 10px;border-radius:0 5px 5px 0;background:#124a2f;color:#fff;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:12px;line-height:1.05;}.ds-label small{display:block;margin-top:3px;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:11px;font-weight:500;color:#ffec96;text-transform:none;}.ds-lane{position:relative;flex:1;height:60px;}.ds-slot{position:absolute;top:0;z-index:2;height:60px;display:flex;flex-direction:column;justify-content:center;padding:5px 8px;border-radius:5px;background:#fbce06;color:#124a2f;box-shadow:0 2px 5px rgba(0,0,0,.16);}.ds-alt{background:#ffec96;}.ds-live{background:#fff;box-shadow:inset 0 0 0 3px #d42e24,0 4px 10px rgba(0,0,0,.25);}.ds-time{font-family:Poppins,Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;}.ds-name{margin-top:2px;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:14px;line-height:1.05;hyphens:manual;}.ds-now{position:absolute;top:-30px;bottom:-6px;left:170px;z-index:1;width:3px;background:#fff;box-shadow:0 0 0 1px rgba(18,74,47,.35);}.ds-now span{position:absolute;top:0;left:50%;padding:4px 9px 3px;border-radius:4px;background:#d42e24;color:#fff;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:15px;line-height:1;white-space:nowrap;transform:translateX(-50%) rotate(-5deg);box-shadow:0 3px 7px rgba(0,0,0,.32);}.ds-now b{font-weight:400;}"
+    },
+    {
+      "name": "Highlight Slot with Flag",
+      "kind": "custom",
+      "refersTo": "slot-highlight",
+      "description": "Red slot carrying the time; a tilted flag hangs above it with the name.",
+      "html": "<div class=\"ds-hl-wrap\"><div class=\"ds-hl\"><span class=\"ds-flag\">Onthulling van de Waever</span><span class=\"ds-hl-time\">15:00</span></div></div>",
+      "css": ".ds-hl-wrap{padding:44px 16px 16px;background:#09a552;}.ds-hl{position:relative;width:180px;height:24px;display:flex;align-items:center;padding:0 8px;border-radius:5px;background:#d42e24;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.16);}.ds-hl-time{font-family:Poppins,Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;}.ds-flag{position:absolute;left:6px;bottom:calc(100% + 2px);max-width:calc(100% - 12px);padding:4px 8px 3px;border-radius:3px;background:#d42e24;color:#fff;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:13px;line-height:1.1;transform:rotate(-3deg);transform-origin:left bottom;box-shadow:0 2px 5px rgba(0,0,0,.28);}"
+    },
+    {
+      "name": "Horeca Daypart Block",
+      "kind": "card",
+      "refersTo": "slot-daypart",
+      "description": "Part-of-day block for a horeca venue: daypart label, never a clock time.",
+      "html": "<div class=\"ds-dp-wrap\"><div class=\"ds-dp\"><span class=\"ds-part\">Middag + avond</span><span class=\"ds-dp-name\">2 uurkes vooraf</span><span class=\"ds-with\">Heintje Davids Collectief, Feest-DJ Aad</span></div></div>",
+      "css": ".ds-dp-wrap{padding:16px;background:#09a552;}.ds-dp{display:flex;flex-direction:column;max-width:320px;padding:6px 10px;border-radius:5px;background:#a6eca3;color:#124a2f;box-shadow:0 2px 5px rgba(0,0,0,.16);}.ds-part{font-family:Poppins,Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}.ds-dp-name{margin-top:2px;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:14px;line-height:1.05;}.ds-with{margin-top:2px;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:12px;font-weight:500;}"
+    },
+    {
+      "name": "Toolbar Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill filter chips; pressed is white, the jump-to-now chip is sticker red.",
+      "html": "<div class=\"ds-bar\"><button class=\"ds-chip\" aria-pressed=\"true\">Hele dag</button><button class=\"ds-chip\" aria-pressed=\"false\">Mijn programma <span class=\"ds-count\">3</span></button><button class=\"ds-chip ds-jump\">Nu</button></div>",
+      "css": ".ds-bar{display:flex;gap:8px;padding:16px;background:#09a552;}.ds-chip{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:0;border-radius:50px;background:rgba(18,74,47,.9);color:#fff;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:14px;line-height:1;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.22);transition:background-color .2s,color .2s,transform .3s cubic-bezier(.16,1,.3,1);}.ds-chip:hover{transform:translateY(-1px);}.ds-chip[aria-pressed=true]{background:#fff;color:#124a2f;}.ds-jump{background:#d42e24;}.ds-count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:50px;background:#d42e24;color:#fff;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:12px;}.ds-chip:focus-visible{outline:3px solid #fbce06;outline-offset:2px;}"
+    },
+    {
+      "name": "Mijn Programma Item",
+      "kind": "card",
+      "refersTo": "slot-live",
+      "description": "Starred act in the per-day list; live item with NU sticker.",
+      "html": "<div class=\"ds-mine\"><span class=\"ds-mine-date\">Zaterdag 14 feb · vandaag</span><div class=\"ds-item ds-item-now\"><span class=\"ds-nu\">Nu</span><span class=\"ds-mt\">16:15<small>tot 16:45</small></span><span class=\"ds-mn\">CV Moeilijk Straal</span><span class=\"ds-mm\"><b>Buiten podium</b></span></div><div class=\"ds-item\"><span class=\"ds-mt\">Avond</span><span class=\"ds-mn\">Nozem-avond</span><span class=\"ds-mm\"><b>Gij&amp;Ik</b> · DJ MCHL</span></div></div>",
+      "css": ".ds-mine{display:grid;gap:6px;max-width:520px;padding:16px;background:#09a552;}.ds-mine-date{justify-self:start;padding:4px 10px;border-radius:4px;background:#124a2f;color:#ffec96;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:15px;line-height:1.2;}.ds-item{position:relative;display:grid;grid-template-columns:5.2em 1fr;gap:0 10px;align-items:baseline;min-height:58px;padding:9px 12px;border-radius:5px;background:#fbce06;color:#124a2f;box-shadow:0 2px 5px rgba(0,0,0,.16);}.ds-item-now{background:#fff;box-shadow:inset 0 0 0 3px #d42e24,0 4px 10px rgba(0,0,0,.25);}.ds-mt{grid-row:span 2;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:15px;line-height:1.1;font-variant-numeric:tabular-nums;}.ds-mt small{display:block;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:12px;font-weight:600;text-transform:none;}.ds-mn{font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:16px;line-height:1.1;}.ds-mm{margin-top:2px;font-family:Poppins,Helvetica,Arial,sans-serif;font-size:13px;font-weight:500;}.ds-nu{position:absolute;top:-8px;right:16px;padding:3px 7px 2px;border-radius:4px;background:#d42e24;color:#fff;font-family:'WAEV','Intro Rust','Lilita One',Poppins,Helvetica,Arial,sans-serif;font-weight:400;text-transform:uppercase;font-size:13px;line-height:1;transform:rotate(-5deg);box-shadow:0 2px 5px rgba(0,0,0,.3);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Waevertent Poster, Made Live",
+    "overview": "This system belongs to the incumbent waeverstadfeest.nl site, and it does not replace that site. The timetable sits on the site's brand-green ground with its woven-ribbon-and-confetti background. That ground comes from the host theme (Divi), and the plugin does not paint it. On top of the ground, the timetable sets the association's programme poster as real, scrollable text. Every location is a dark-green tab. Acts are yellow blocks on a single time axis. Moments that matter are red stickers, tilted as if slapped on by hand. The mood is festive, loud and local, but the grid is strict: one axis, one row or column per location, and one state marker for \"now\".\n\nDensity is high and deliberate. The whole day sits in one view: six locations on a phone, and 13:00 to 00:00 in one desktop column set without horizontal scroll. Legibility comes from block colour and uppercase display type, not from whitespace. Depth is physical: soft drop shadows lift tabs, slots and stickers off the green, and tilts between −1.2° and −5° say \"sticker\", never \"card\".\n\nEverything is scoped under the `.wvp` root, and all tokens are custom properties on `.wvp` (`--wvp-green`, `--wvp-red-text`, `--wvp-display`, …). They are not on `:root`, so the theme cannot leak in and the plugin cannot leak out. Visitor copy is Dutch, in the association's dialect-rich voice. Code identifiers and comments are English.",
+    "keyCharacteristics": [
+      "Brand-green ground, dark-green structure, yellow content, red for state and specials.",
+      "An uppercase display face for everything a visitor scans. Poppins for supporting lines.",
+      "Tilted stickers with soft shadows. Tabs and blocks have 5px corners.",
+      "One time axis that turns with the container: horizontal on phones, vertical at a container width of 1000px or more.",
+      "One state marker, reserved for NOW."
+    ],
+    "rules": [
+      {
+        "name": "The Text-Safe Red Rule",
+        "body": "Small white text sits only on Sticker Red or Tent Green, at 4.5:1 or better. Carnival Red never carries small white text.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Marker Rule",
+        "body": "Red plus white means \"now\". The red tilted NU sticker, the white NU line and the white live slot with a red inset ring are the only state marker. No other state borrows that combination.",
+        "section": "colors"
+      },
+      {
+        "name": "The Whole Name Rule",
+        "body": "Names never auto-hyphenate (`hyphens: manual`). They wrap between words or clamp. \"Waeverstad\" is never split.",
+        "section": "typography"
+      },
+      {
+        "name": "The Shout/Speak Rule",
+        "body": "Uppercase display type is for what a visitor scans. Poppins sentence case is for what they read.",
+        "section": "typography"
+      },
+      {
+        "name": "The Behind-The-Names Rule",
+        "body": "The NU line sits at z-index 1 and slots at 2 (highlights at 3, sticky labels at 6, toolbar at 8). The line shows between rows and on the ruler and never strikes through a name.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do set every token as a custom property on `.wvp` and scope every selector under `.wvp`.",
+      "Do put small white text only on Sticker Red or Tent Green, at 4.5:1 or better.",
+      "Do keep the NU sticker, the white NU line and the white-with-red-ring live slot as the only state marker, with the line behind the slots.",
+      "Do turn the axis on the timeline container (`wvp`, at 1000px or wider), not on the viewport.",
+      "Do show horeca entries by part of the day (middag, avond, or both), with no clock times.",
+      "Do tilt only stickers, flags, banners and the active tab, between −1.2° and −5°, with soft shadows.",
+      "Do write visitor copy in Dutch and code in English.",
+      "Do name Intro Rust (\"WAEV\") as the display face. Lilita One is a stand-in for the public demo only."
+    ],
+    "donts": [
+      "Don't invent start or end times for horeca entries.",
+      "Don't let automatic hyphenation split a name.",
+      "Don't use Carnival Red behind small white text.",
+      "Don't let the NU line cross over a slot or a name.",
+      "Don't give any other state (starred, found, today) the red-sticker-plus-white-line combination.",
+      "Don't link to or bundle font files. The host site supplies the display face."
+    ]
+  }
+}
