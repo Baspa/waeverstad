@@ -16,6 +16,8 @@ The first piece is a new programme page. The old page showed the programme as th
 | `docs/` | GitHub Pages output (do not edit by hand; rebuild instead) |
 | `reference/2026/` | The old posters and logo, kept as source material |
 | `PRODUCT.md` | Product context: who uses this, constraints, principles |
+| `DESIGN.md` | The design system as built: colours, type, components, rules |
+| `knowledge/` | Background notes and open decisions, e.g. [how the association could edit the schedule](knowledge/schedule-editing.md) |
 | `.impeccable/` | Design decision records (surface brief, decision sketches) |
 
 ## How the timeline works
