@@ -5,6 +5,11 @@
 *.ttf
 *.woff
 *.woff2
+# ...except the OFL stand-ins for the public demo (licences included next to them).
+!demo/assets/fonts/
+!demo/assets/fonts/*
+!docs/assets/fonts/
+!docs/assets/fonts/*
 # Local review captures
 .impeccable/review/
 .impeccable/live/

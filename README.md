@@ -99,7 +99,7 @@ php demo/build.php   # writes docs/index.html and docs/assets/
 
 Open `docs/index.html` locally, or push: GitHub Pages serves `docs/` from `main`. Add `?now=2026-02-14T16:20` to any URL to pretend it's that moment.
 
-The demo uses **Lilita One** (Google Fonts) as a stand-in, because Intro Rust is a commercial font and isn't included in this public repo.
+The demo uses **Lilita One** as a stand-in, because Intro Rust is a commercial font and isn't included in this public repo. Lilita One and Poppins are OFL fonts and are self-hosted from `demo/assets/fonts/` (licences next to them), so the demo makes no requests to Google. Never add Intro Rust or other commercial font files there: `.gitignore` only lets that folder through.
 
 ## Open points
 

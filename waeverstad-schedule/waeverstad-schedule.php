@@ -50,13 +50,37 @@ add_shortcode(WAEVERSTAD_SCHEDULE_SHORTCODE, function ($atts): string {
 
     $data = waeverstad_schedule_data();
     if ($data === null) {
-        return current_user_can('edit_posts')
-            ? '<p><strong>Het programma kon niet worden geladen.</strong> Controleer data/schedule.json in de plugin Waeverstad Schedule.</p>'
-            : '';
+        return waeverstad_schedule_unavailable('Het bestand data/schedule.json kon niet worden gelezen of is geen geldige JSON.');
+    }
+
+    // A mistake in the data (e.g. an act without an end time) must never take the whole page down.
+    try {
+        $html = (new \Waeverstad\Schedule\Renderer($data, ['title' => (string) $atts['title']]))->render();
+    } catch (\Throwable $error) {
+        error_log('Waeverstad Schedule: ' . $error->getMessage());
+
+        // Keep server paths out of what editors see.
+        $reason = (string) preg_replace(['~,?\s*called in .*$~s', '~(?:/[\w.-]+)+\.php(?::\d+)?~'], ['', '…'], $error->getMessage());
+
+        return waeverstad_schedule_unavailable($reason . ' Vaak is dit een act zonder begin- of eindtijd, of een tijd die niet als 15:30 is geschreven.');
     }
 
     wp_enqueue_style('waeverstad-schedule');
     wp_enqueue_script('waeverstad-schedule');
 
-    return (new \Waeverstad\Schedule\Renderer($data, ['title' => (string) $atts['title']]))->render();
+    return $html;
 });
+
+/**
+ * What to show when the schedule can't be rendered: a calm line for visitors,
+ * the actual reason for people who can edit the site.
+ */
+function waeverstad_schedule_unavailable(string $reason): string
+{
+    if (current_user_can('edit_posts')) {
+        return '<p><strong>Het programma kon niet worden getoond.</strong> Controleer data/schedule.json in de plugin Waeverstad Schedule. Melding: '
+            . esc_html($reason) . '</p><p><small>Alleen zichtbaar voor ingelogde redacteuren.</small></p>';
+    }
+
+    return '<p>Het programma is op dit moment niet beschikbaar. Probeer het straks opnieuw.</p>';
+}

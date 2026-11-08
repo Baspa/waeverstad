@@ -9,7 +9,8 @@
  *
  * The site's display face (Intro Rust) is a commercial font and is not shipped
  * here; the demo uses Lilita One as a stand-in. On the real site the plugin
- * picks up Intro Rust from the theme automatically.
+ * picks up Intro Rust from the theme automatically. Lilita One and Poppins are
+ * OFL fonts, self-hosted from demo/assets/fonts so the page makes no requests to Google.
  */
 
 declare(strict_types=1);
@@ -49,12 +50,16 @@ $html = <<<HTML
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Programma | Waeverstadfeest (concept)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/LilitaOne-Regular.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="icon" href="assets/favicon.png" sizes="192x192">
 <link rel="stylesheet" href="assets/schedule.css?v={$version}">
 <style>
+/* Self-hosted OFL fonts (see assets/fonts/OFL-*.txt): no requests to Google, so no visitor IPs leave this page. */
+@font-face { font-family: 'Lilita One'; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/LilitaOne-Regular.ttf) format('truetype'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/poppins-400.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/poppins-500.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 600; font-display: swap; src: url(assets/fonts/poppins-600.woff2) format('woff2'); }
+@font-face { font-family: 'Poppins'; font-style: normal; font-weight: 700; font-display: swap; src: url(assets/fonts/poppins-700.woff2) format('woff2'); }
 html { background: #09a552; }
 body { margin: 0; color: #124a2f; font-family: Poppins, Helvetica, Arial, sans-serif; background: #09a552 url(assets/background.webp) left top / 1980px auto repeat; }
 .wvp { --wvp-display: 'Lilita One', Poppins, Helvetica, Arial, sans-serif; }
@@ -126,6 +131,10 @@ copy($plugin . '/assets/schedule.css', $out . '/assets/schedule.css');
 copy($plugin . '/assets/schedule.js', $out . '/assets/schedule.js');
 foreach (['background.webp', 'hero.webp', 'logo.webp', 'favicon.png'] as $file) {
     copy($sourceAssets . '/' . $file, $out . '/assets/' . $file);
+}
+@mkdir($out . '/assets/fonts', 0777, true);
+foreach (glob($sourceAssets . '/fonts/*') as $file) {
+    copy($file, $out . '/assets/fonts/' . basename($file));
 }
 touch($out . '/.nojekyll');
 

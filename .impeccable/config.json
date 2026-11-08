@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "lilita one",
+        "createdAt": "2026-11-08T07:31:34.855Z",
+        "reason": "user confirmed: Lilita One is the free stand-in for the commercial Intro Rust in the public demo and decision mocks, recorded as such in DESIGN.md"
+      }
+    ]
+  }
+}
